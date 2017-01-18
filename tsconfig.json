@@ -1,0 +1,14 @@
+{
+    "files": [
+        "src/main.ts",
+        "Src/greet.ts",
+        "Src/helper/enums.ts",
+        "Src/helper/config.ts"
+    ],
+    "compilerOptions": {
+        "noImplicitAny": true,
+        "removeComments": true,
+         "target": "es5"
+       
+    }
+}
