@@ -5,10 +5,21 @@
         "Src/helper/enums.ts",
         "Src/helper/config.ts"
     ],
+    
     "compilerOptions": {
-        "noImplicitAny": true,
+        "isolatedModules": false,
+        "jsx": "react",
+        "experimentalDecorators": true,
+        "emitDecoratorMetadata": true,
+        "declaration": false,
+        "noImplicitAny": false,
+        "noLib": false,
+        "preserveConstEnums": true,
+        "suppressImplicitAnyIndexErrors": true,
+        "target": "es5",
+        "moduleResolution": "node",
         "removeComments": true,
-         "target": "es5"
-       
+        "module": "commonjs",   
+        "lib": ["es2015", "dom"]             
     }
 }

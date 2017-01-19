@@ -116,6 +116,8 @@ watchedBrowserify.on("update", bundle);
 watchedBrowserify.on("log", gutil.log);
 
 
+
+
 //4.versiyon
 /*
 var gulp = require("gulp");
@@ -188,4 +190,5 @@ gulp.task('default', ['copyHtml'], function () {
     .pipe(sourcemaps.write('./'))
     .pipe(gulp.dest('dist'));
 });
+
 */
