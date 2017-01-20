@@ -12,7 +12,7 @@ gulp.task("default", function () {
 */
 
 //2.versiyon
-/*
+
 var gulp = require("gulp");
 var browserify = require("browserify");
 var source = require('vinyl-source-stream');
@@ -39,7 +39,7 @@ gulp.task("default", ["copy-html"], function () {
     .pipe(source('bundle.js'))
     .pipe(gulp.dest("dist"));
 });
-*/
+
 
 
 //3.Versiyon
@@ -80,7 +80,7 @@ watchedBrowserify.on("log", gutil.log);
 */
 
 //3.Versiyon
-
+/*
 var gulp = require("gulp");
 var browserify = require("browserify");
 var source = require('vinyl-source-stream');
@@ -114,7 +114,7 @@ function bundle() {
 gulp.task("default", ["copy-html"], bundle);
 watchedBrowserify.on("update", bundle);
 watchedBrowserify.on("log", gutil.log);
-
+*/
 
 
 
@@ -153,6 +153,8 @@ gulp.task("default", ["copy-html"], function () {
     .pipe(sourcemaps.write('./'))
     .pipe(gulp.dest("dist"));
  */
+
+//5.versiyon
 
 /*
 var gulp = require('gulp');

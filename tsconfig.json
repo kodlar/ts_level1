@@ -1,9 +1,9 @@
 {
     "files": [
         "src/main.ts",
-        "Src/greet.ts",
-        "Src/helper/enums.ts",
-        "Src/helper/config.ts"
+        "src/greet.ts",
+        "src/helpers/enums.ts",
+        "src/helpers/config.ts"
     ],
     
     "compilerOptions": {
@@ -20,6 +20,15 @@
         "moduleResolution": "node",
         "removeComments": true,
         "module": "commonjs",   
-        "lib": ["es2015", "dom"]             
-    }
+        "lib": ["es2015", "dom"],
+        "watch": true,
+         "diagnostics": true,
+         "pretty": true
+    },
+    "include": [
+        "src/**/*"
+    ],
+    "exclude": [
+        "node_modules"    
+    ]
 }

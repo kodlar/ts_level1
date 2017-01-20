@@ -1,10 +1,9 @@
 import { Schema } from "mongoose";
-import { ImageStatus, ImageType } from '../helper/enums'
 
 export let ImageSchema : Schema = new Schema({    
     imageUrl : String,
-    status : ImageStatus,
-    type : ImageType,
+    status : Number,
+    type : Number,
     spot : String,
     addDate : Date
 });

@@ -1,23 +1,30 @@
-import { ImageStatus, ImageType } from '../helper/enums'
-import { IImage, IImageEntity } from "../interfaces/IImage";
-import { IImageBusinessModel } from "../models/IImageBusinessModel";
+
+import { IImageEntity } from "../interfaces/entities/IImageEntity";
+import { ImageEntity } from "../interfaces/entities/ImageEntity";
+import { Utility } from '../helpers/config';
+import { Enviroment } from '../helpers/enums';
+import { IImageBusiness } from "../interfaces/business/IImageBusiness";
+import { ImageBusiness } from "../interfaces/business/ImageBusiness";
 import { ImageSchema } from "../schemas/ImageSchema";
 import mongoose = require("mongoose");
-
+//test amaçlı
+import { ImageStatus, ImageType } from '../helpers/enums'
 
 class ImageController {
 
     //store test data
-    private dataList: Array<IImage>;
-    private dataItem: IImage = new IImageEntity();
-    //the Image model
-    public static Image: mongoose.Model<IImageBusinessModel>;
+    private _imageEntityList: Array<IImageEntity>;
+    private _imageEntity: IImageEntity = new ImageEntity();
+    private _connectionString : string;
+    //the Image model    
+    //public static ImageModel: mongoose.Model<IImageBusinessModel>;
 
-    constructor() {
+    private _imageBusiness : IImageBusiness = new ImageBusiness();
 
-        let _date = new Date();
-        //create mock data
-        this.dataList = [{
+    constructor(connectionString : string){         
+          this._connectionString = connectionString;
+          let _date = new Date();
+          this._imageEntityList = [{
             AddDate: _date.toJSON(),
             ImageUrl: "http://findicons.com/files/icons/2711/free_icons_for_windows8_metro/128/test_tube.png",
             Spot: "test",
@@ -41,52 +48,26 @@ class ImageController {
         }];
     }
 
-
-
-    public GetGalleryImages(galleryId?: number): Array<IImage> {
-
-        let _list: Array<IImage> = [];
-        //burada db connection kur
-        //mock data constructor'dan geliyor...
-
-        for (let number = 0; number < this.dataList.length; number++) {
-
-            let currentRecord = this.dataList[number];
-
-            this.dataItem.Id = currentRecord.Id;
-            this.dataItem.ImageUrl = currentRecord.ImageUrl;
-            this.dataItem.AddDate = currentRecord.AddDate;
-            this.dataItem.Spot = currentRecord.Spot;
-            this.dataItem.Status = currentRecord.Status;
-            this.dataItem.Type = currentRecord.Type;
-
-            _list.push(this.dataItem);
-            
-            this.dataItem = new IImageEntity();
-        }
-
-        console.info("listemiz: ", _list);
-        return _list;
+    public SaveImage(){
+        
+        //console.log(connection);
+        /*let db = mongoose.connection;  
+        db.on('error', console.error.bind(console, 'Veritabanı Bağlantı Hatası:'));
+        db.once('open', function() {
+         console.info("Veritabanı bağlantısı sağlandı");
+         let imageModel = mongoose.model('image',ImageSchema);
+         var fluffy = new imageModel(this._imageEntityList);
+         fluffy.save(function (err, fluffy) {
+           if (err) return console.error(err);
+          });
+         console.info("Veritabanı bağlantı işlemi tamamlandı");
+        });
+        */
+        
     }
 
-
-    /*
-        public GetImage(id:number):Image{
-    
-            //burada db connection kur
-            let _id = 1;
-            let _imageUrl = "";
-            let _spot = "spot girilebilir";
-            var d = new Date();
-            let _addDate = d.toJSON();
-            let model = new Image(_id,_imageUrl,ImageStatus.Active,ImageType.Gallery, _spot,_addDate);
-            
-            //veriyi döndür ve imagemodel'e set et
-            this._imageModel = model;
-            return this._imageModel;
-        }
-          
-    */
+              
+ 
 }
 
 export { ImageController }
